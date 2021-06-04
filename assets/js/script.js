@@ -118,6 +118,15 @@ window.addEventListener('load', () => {
     );
 });
 
+window.addEventListener('beforeunload', () => {
+    sessionUserAnswerField.innerText = '';
+    sessionUserWrongAnswerField.innerText = '';
+    sessionStorage.setItem(sessionUserAttempsKey, 0);
+    sessionUserAttempsField.innerText = sessionStorage.getItem(
+        sessionUserAttempsKey
+    );
+});
+
 playButton.addEventListener('click', () => {
     sessionStorage.setItem(sessionAnswerKey, getAnswer());
     beforeGameDisplay.setAttribute('hidden', true);
