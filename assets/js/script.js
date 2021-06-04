@@ -55,10 +55,10 @@ window.addEventListener('load', () => {
             sessionStorage.setItem(sessionUserAttempsKey, 0);
         if (sessionStorage.getItem(sessionUserIsPlayingKey) === null)
             sessionStorage.setItem(sessionAnswerKey, false);
-        if (sessionStorage.getItem(localTotalVictoryKey) === null)
-            sessionStorage.setItem(localTotalVictoryKey, 0);
-        if (sessionStorage.getItem(localMaximumAttempsKey) === null)
-            sessionStorage.setItem(localMaximumAttempsKey, 0);
+        if (localStorage.getItem(localTotalVictoryKey) === null)
+            localStorage.setItem(localTotalVictoryKey, 0);
+        if (localStorage.getItem(localMaximumAttempsKey) === null)
+            localStorage.setItem(localMaximumAttempsKey, 0);
     } else {
         alert(
             'Browser anda tidak mendukug web storage, silahkan ganti browser anda'
