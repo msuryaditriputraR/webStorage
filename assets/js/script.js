@@ -60,7 +60,26 @@ const checkAnswer = userGuess => {
 };
 
 // function updateScore
-const updateScore = () => {};
+const updateScore = () => {
+    const sessionAttempsValue = parseInt(
+        sessionStorage.getItem(sessionUserAttempsKey)
+    );
+    const localAttempsValue = parseInt(
+        localStorage.getItem(localMaximumAttempsKey)
+    );
+
+    if (sessionAttempsValue > localAttempsValue) {
+        localStorage.setItem(localMaximumAttempsKey, sessionAttempsValue);
+        localMaximumAttempField.innerText = sessionAttempsValue;
+    }
+
+    const previousTotalVictoryAmount = parseInt(
+        localStorage.getItem(localTotalVictoryKey)
+    );
+    localStorage.setItem(localTotalVictoryKey, previousTotalVictoryAmount + 1);
+    localTotalVictoryField.innerText =
+        localStorage.getItem(localTotalVictoryKey);
+};
 
 //inisialiasi key untuk session storage
 const sessionAnswerKey = 'SESSION_ANSWER';
