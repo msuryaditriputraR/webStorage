@@ -54,7 +54,7 @@ window.addEventListener('load', () => {
         if (sessionStorage.getItem(sessionUserAttempsKey) === null)
             sessionStorage.setItem(sessionUserAttempsKey, 0);
         if (sessionStorage.getItem(sessionUserIsPlayingKey) === null)
-            sessionStorage.setItem(sessionAnswerKey, false);
+            sessionStorage.setItem(sessionUserIsPlayingKey, false);
         if (localStorage.getItem(localTotalVictoryKey) === null)
             localStorage.setItem(localTotalVictoryKey, 0);
         if (localStorage.getItem(localMaximumAttempsKey) === null)
@@ -64,4 +64,13 @@ window.addEventListener('load', () => {
             'Browser anda tidak mendukug web storage, silahkan ganti browser anda'
         );
     }
+
+    sessionUserAttempsField.innerText = sessionStorage.getItem(
+        sessionUserAttempsKey
+    );
+    localTotalVictoryField.innerText =
+        localStorage.getItem(localTotalVictoryKey);
+    localMaximumAttempField.innerText = localStorage.getItem(
+        localMaximumAttempsKey
+    );
 });
