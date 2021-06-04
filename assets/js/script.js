@@ -74,3 +74,9 @@ window.addEventListener('load', () => {
         localMaximumAttempsKey
     );
 });
+
+playButton.addEventListener('click', () => {
+    sessionStorage.setItem(sessionAnswerKey, getAnswer());
+    beforeGameDisplay.setAttribute('hidden', true);
+    duringGameDisplay.removeAttribute('hidden');
+});
