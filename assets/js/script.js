@@ -39,7 +39,28 @@ const getAnswer = () => {
 };
 
 // function cek Answer
-const checkAnswer = () => {};
+const checkAnswer = userGuess => {
+    const answer = sessionStorage.getItem(sessionAnswerKey);
+    if (userGuess == answer) {
+        duringGameDisplay.setAttribute('hidden', true);
+        afterGameDisplay.removeAttribute('hidden');
+        sessionTrueAnswerField.innerText = answer;
+        updateScore();
+    } else {
+        const previousAttempAmount = parseInt(
+            sessionStorage.getItem(sessionUserAttempsKey)
+        );
+        sessionStorage.setItem(sessionUserAttempsKey, previousAttempAmount);
+        sessionUserAttempsField.innerText = sessionStorage.getItem(
+            sessionUserAttempsKey
+        );
+        sessionUserAnswerField.innerText = '';
+        sessionUserWrongAnswerField.innerText = userGuess;
+    }
+};
+
+// function updateScore
+const updateScore = () => {};
 
 //inisialiasi key untuk session storage
 const sessionAnswerKey = 'SESSION_ANSWER';
