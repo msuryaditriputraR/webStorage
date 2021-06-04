@@ -27,7 +27,7 @@ const sessionUserAttempsField = document.getElementById(
 );
 
 //inisialisasi fungsi untuk menghasilkan jawaban permainan
-function getAnswer() {
+const getAnswer = () => {
     let answer = '123'.split('');
     for (let i = 0; i < answer.length; i++) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -36,7 +36,10 @@ function getAnswer() {
         answer[j] = tmp;
     }
     return answer.join('');
-}
+};
+
+// function cek Answer
+const checkAnswer = () => {};
 
 //inisialiasi key untuk session storage
 const sessionAnswerKey = 'SESSION_ANSWER';
@@ -79,4 +82,22 @@ playButton.addEventListener('click', () => {
     sessionStorage.setItem(sessionAnswerKey, getAnswer());
     beforeGameDisplay.setAttribute('hidden', true);
     duringGameDisplay.removeAttribute('hidden');
+});
+
+answerButton1.addEventListener('click', () => {
+    sessionUserAnswerField.innerText += '1';
+    if (sessionUserAnswerField.innerText.length == 3)
+        checkAnswer(sessionUserAnswerField.innerText);
+});
+
+answerButton2.addEventListener('click', () => {
+    sessionUserAnswerField.innerText += '2';
+    if (sessionUserAnswerField.innerText.length == 3)
+        checkAnswer(sessionUserAnswerField.innerText);
+});
+
+answerButton3.addEventListener('click', () => {
+    sessionUserAnswerField.innerText += '3';
+    if (sessionUserAnswerField.innerText.length == 3)
+        checkAnswer(sessionUserAnswerField.innerText);
 });
