@@ -120,7 +120,7 @@ const checkAnswer = userGuess => {
         const previousAttempAmount = parseInt(
             sessionStorage.getItem(sessionUserAttempsKey)
         );
-        sessionStorage.setItem(sessionUserAttempsKey, previousAttempAmount);
+        sessionStorage.setItem(sessionUserAttempsKey, previousAttempAmount + 1);
         sessionUserAttempsField.innerText = sessionStorage.getItem(
             sessionUserAttempsKey
         );
