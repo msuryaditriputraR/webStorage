@@ -38,49 +38,6 @@ const getAnswer = () => {
     return answer.join('');
 };
 
-// function cek Answer
-const checkAnswer = userGuess => {
-    const answer = sessionStorage.getItem(sessionAnswerKey);
-    if (userGuess == answer) {
-        duringGameDisplay.setAttribute('hidden', true);
-        afterGameDisplay.removeAttribute('hidden');
-        sessionTrueAnswerField.innerText = answer;
-        updateScore();
-    } else {
-        const previousAttempAmount = parseInt(
-            sessionStorage.getItem(sessionUserAttempsKey)
-        );
-        sessionStorage.setItem(sessionUserAttempsKey, previousAttempAmount);
-        sessionUserAttempsField.innerText = sessionStorage.getItem(
-            sessionUserAttempsKey
-        );
-        sessionUserAnswerField.innerText = '';
-        sessionUserWrongAnswerField.innerText = userGuess;
-    }
-};
-
-// function updateScore
-const updateScore = () => {
-    const sessionAttempsValue = parseInt(
-        sessionStorage.getItem(sessionUserAttempsKey)
-    );
-    const localAttempsValue = parseInt(
-        localStorage.getItem(localMaximumAttempsKey)
-    );
-
-    if (sessionAttempsValue > localAttempsValue) {
-        localStorage.setItem(localMaximumAttempsKey, sessionAttempsValue);
-        localMaximumAttempField.innerText = sessionAttempsValue;
-    }
-
-    const previousTotalVictoryAmount = parseInt(
-        localStorage.getItem(localTotalVictoryKey)
-    );
-    localStorage.setItem(localTotalVictoryKey, previousTotalVictoryAmount + 1);
-    localTotalVictoryField.innerText =
-        localStorage.getItem(localTotalVictoryKey);
-};
-
 //inisialiasi key untuk session storage
 const sessionAnswerKey = 'SESSION_ANSWER';
 const sessionUserAttempsKey = 'SESSION_USER_ATTEMPS';
@@ -150,3 +107,46 @@ answerButton3.addEventListener('click', () => {
     if (sessionUserAnswerField.innerText.length == 3)
         checkAnswer(sessionUserAnswerField.innerText);
 });
+
+// function cek Answer
+const checkAnswer = userGuess => {
+    const answer = sessionStorage.getItem(sessionAnswerKey);
+    if (userGuess == answer) {
+        duringGameDisplay.setAttribute('hidden', true);
+        afterGameDisplay.removeAttribute('hidden');
+        sessionTrueAnswerField.innerText = answer;
+        updateScore();
+    } else {
+        const previousAttempAmount = parseInt(
+            sessionStorage.getItem(sessionUserAttempsKey)
+        );
+        sessionStorage.setItem(sessionUserAttempsKey, previousAttempAmount);
+        sessionUserAttempsField.innerText = sessionStorage.getItem(
+            sessionUserAttempsKey
+        );
+        sessionUserAnswerField.innerText = '';
+        sessionUserWrongAnswerField.innerText = userGuess;
+    }
+};
+
+// function updateScore
+const updateScore = () => {
+    const sessionAttempsValue = parseInt(
+        sessionStorage.getItem(sessionUserAttempsKey)
+    );
+    const localAttempsValue = parseInt(
+        localStorage.getItem(localMaximumAttempsKey)
+    );
+
+    if (sessionAttempsValue > localAttempsValue) {
+        localStorage.setItem(localMaximumAttempsKey, sessionAttempsValue);
+        localMaximumAttempField.innerText = sessionAttempsValue;
+    }
+
+    const previousTotalVictoryAmount = parseInt(
+        localStorage.getItem(localTotalVictoryKey)
+    );
+    localStorage.setItem(localTotalVictoryKey, previousTotalVictoryAmount + 1);
+    localTotalVictoryField.innerText =
+        localStorage.getItem(localTotalVictoryKey);
+};
