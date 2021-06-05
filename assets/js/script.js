@@ -150,3 +150,12 @@ const updateScore = () => {
     localTotalVictoryField.innerText =
         localStorage.getItem(localTotalVictoryKey);
 };
+
+destroyDataButton.addEventListener('click', () => {
+    sessionStorage.removeItem(sessionAnswerKey);
+    sessionStorage.removeItem(sessionUserAttempsKey);
+    sessionStorage.removeItem(sessionUserIsPlayingKey);
+    localStorage.removeItem(localMaximumAttempsKey);
+    localStorage.removeItem(localTotalVictoryKey);
+    alert('Mohon reload halaman ini kembali');
+});
